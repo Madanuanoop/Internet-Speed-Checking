@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#06101d">
+<title>Network Speed Radar ,Made by Anoop | Madanu Anoop</title>
+<style>
+:root{color-scheme:dark;--bg:#06101d;--panel:rgba(12,26,43,.9);--line:rgba(115,169,203,.2);--text:#e8f5ff;--muted:#8ba4b9;--cyan:#62e6ef;--blue:#6d9eff;--violet:#a78bfa;--green:#55e5a3}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 15% 0%,#0d2940 0,transparent 38%),radial-gradient(ellipse at 95% 45%,#161b3b 0,transparent 30%),var(--bg);color:var(--text);font-family:Inter,Segoe UI,Arial,sans-serif;min-height:100vh}.ambient{position:fixed;width:280px;height:280px;border-radius:50%;filter:blur(100px);opacity:.12;pointer-events:none;z-index:-1}.ambient-a{background:#22d3ee;top:35%;left:-170px}.ambient-b{background:#8b5cf6;right:-170px;top:20%}.topbar{height:76px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 max(22px,calc((100vw - 1240px)/2));background:rgba(5,13,24,.86);backdrop-filter:blur(16px);position:sticky;top:0;z-index:5}.brand{display:flex;align-items:center;gap:12px;color:var(--text);text-decoration:none;font-weight:800;letter-spacing:.08em}.brand-icon{font-size:28px;color:var(--cyan);border:1px solid #256477;border-radius:10px;width:42px;height:42px;display:grid;place-items:center}.brand small{display:block;font-size:9px;color:var(--muted);letter-spacing:.13em;margin-top:3px}.accent{color:var(--cyan)}.top-actions{display:flex;align-items:center;gap:10px;font-size:10px;color:var(--muted)}.status-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 12px #55e5a388}.pill,.tag{border:1px solid var(--line);border-radius:30px;padding:7px 10px;color:#a8c8da;font-size:9px;letter-spacing:.08em}.shell{max-width:1240px;margin:auto;padding:38px 24px 20px}.hero{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:28px}.eyebrow{font-size:10px;letter-spacing:.17em;color:#6db9c9;margin:0 0 10px}.hero h1{font-size:clamp(30px,4vw,46px);letter-spacing:-.05em;margin:0}.muted{color:var(--muted);line-height:1.7}.hero-copy{max-width:620px;font-size:14px;margin:12px 0 0}.sim-select{width:255px;flex-shrink:0}.sim-select label{font-size:10px;color:var(--muted);letter-spacing:.1em}select,input{display:block;width:100%;margin-top:8px;background:#0d1c2e;border:1px solid #29455c;border-radius:10px;color:var(--text);padding:12px;font:13px inherit}.tiny{font-size:11px;color:var(--muted);line-height:1.6}.main-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.lower-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:18px;margin-top:18px}.panel{border:1px solid var(--line);background:linear-gradient(145deg,rgba(15,31,50,.94),rgba(7,18,32,.96));border-radius:18px;padding:22px;box-shadow:0 18px 50px #0002;min-width:0}.panel-heading{display:flex;justify-content:space-between;align-items:center;gap:12px}.panel-heading h2{font-size:17px;margin:0}.panel-heading .eyebrow{margin-bottom:7px}.live-label{font-size:10px;color:#70e7af;display:flex;gap:7px;align-items:center}.radar-wrap{display:grid;place-items:center;padding:24px 0 12px}.radar{width:min(100%,330px);aspect-ratio:1;border-radius:50%;border:1px solid #1b5267;position:relative;overflow:hidden;background:radial-gradient(circle,#0b3d4a 0,#092331 35%,#071724 70%);box-shadow:inset 0 0 40px #22d3ee10,0 0 40px #22d3ee08}.radar:before{content:"";position:absolute;inset:12%;border:1px solid #1e596a;border-radius:50%;box-shadow:0 0 0 32px #16455725,0 0 0 64px #16455720,0 0 0 96px #16455718}.radar-grid{position:absolute;inset:0;background:linear-gradient(90deg,transparent 49.8%,#246173 50%,transparent 50.3%),linear-gradient(transparent 49.8%,#246173 50%,transparent 50.3%)}.radar-grid:after{content:"";position:absolute;inset:0;background:linear-gradient(45deg,transparent 49.8%,#1a4d5d 50%,transparent 50.3%),linear-gradient(-45deg,transparent 49.8%,#1a4d5d 50%,transparent 50.3%)}.radar-sweep{position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 0deg,transparent 0 292deg,rgba(47,230,225,.02) 315deg,rgba(47,230,225,.28) 358deg,transparent 360deg);animation:sweep 5s linear infinite}@keyframes sweep{to{transform:rotate(360deg)}}.radar-point{position:absolute;width:7px;height:7px;background:var(--cyan);border-radius:50%;box-shadow:0 0 14px var(--cyan);animation:pulse 2.2s infinite}.p1{top:29%;left:63%}.p2{top:61%;left:29%;background:var(--violet);box-shadow:0 0 14px var(--violet);animation-delay:.6s}.p3{top:70%;left:68%;animation-delay:1.2s}@keyframes pulse{50%{box-shadow:0 0 0 10px #62e6ef10,0 0 18px currentColor}}.radar-center{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-size:9px;letter-spacing:.15em;color:#c6fbff;border:1px solid #2a8190;padding:7px;border-radius:50%;background:#06202b}.radar-label{position:absolute;font-size:9px;color:#5e9ba9}.north{top:7px;left:50%}.south{bottom:7px;left:50%}.east{right:8px;top:49%}.west{left:8px;top:49%}.radar-legend{display:flex;justify-content:center;gap:18px;flex-wrap:wrap;color:var(--muted);font-size:10px}.legend-dot{width:7px;height:7px;display:inline-block;border-radius:50%;margin-right:5px}.cyan{background:var(--cyan)}.violet{background:var(--violet)}.notice{display:flex;gap:12px;border:1px solid #25485b;background:#0a2030;border-radius:10px;padding:12px 14px;margin-top:18px;font-size:11px;line-height:1.6;color:#9db8c8}.notice strong{color:#a7edf2;white-space:nowrap}.speed-number{padding:25px 0 16px;display:flex;align-items:baseline;gap:8px}.speed-number strong{font-size:clamp(46px,6vw,66px);letter-spacing:-.07em;font-weight:700;line-height:1}.speed-number>span{font-size:12px;color:var(--cyan)}.speed-number small{margin-left:auto;font-size:10px;letter-spacing:.12em;color:var(--muted)}.speed-bars{display:grid;gap:12px;margin-bottom:20px}.speed-bars>div{display:grid;grid-template-columns:85px 1fr;align-items:center;gap:12px;font-size:11px;color:var(--muted)}.bar{height:6px;background:#1a2c3e;border-radius:9px;overflow:hidden}.bar i{display:block;width:0;height:100%;background:linear-gradient(90deg,#22d3ee,#60a5fa);border-radius:9px;transition:width .4s}.metric-cards{display:grid;grid-template-columns:1fr 1fr;gap:10px}.metric{background:#091a2b;border:1px solid #1b3448;border-radius:12px;padding:14px}.metric span{display:block;font-size:9px;letter-spacing:.1em;color:var(--muted);margin-bottom:8px}.metric strong{font-size:20px}.metric strong small{font-size:10px;color:var(--muted);font-weight:400}.button-row{display:flex;gap:10px;margin-top:18px}button{border:0;border-radius:10px;padding:12px 15px;font-size:12px;font-weight:700;cursor:pointer;transition:transform .15s,opacity .15s}button:hover:not(:disabled){transform:translateY(-1px)}button:disabled{opacity:.4;cursor:not-allowed}.primary{background:linear-gradient(100deg,#5ee7ef,#74b7ff);color:#04121d;flex:1}.secondary{background:#14283a;color:#d2e6f2;border:1px solid #29475d}.text-button{background:transparent;color:#7bdce5;padding:6px;font-size:11px}.table-wrap{overflow:auto;margin-top:15px}table{width:100%;border-collapse:collapse;white-space:nowrap;text-align:left;font-size:11px}th{color:#7294a9;font-size:9px;letter-spacing:.08em;padding:12px 10px;border-bottom:1px solid var(--line)}td{padding:14px 10px;border-bottom:1px solid #1a2e40;color:#c6d9e6}td:first-child{font-weight:700;color:#e5f6ff}.empty{text-align:center;white-space:normal;line-height:1.6;color:var(--muted)}.details-panel .tag{font-size:9px}.detail-row{display:flex;justify-content:space-between;gap:14px;padding:16px 0;border-bottom:1px solid #1a2e40;font-size:11px}.detail-row span{color:var(--muted)}.detail-row strong{text-align:right;color:#bdeaf0;font-size:10px}.details-panel .notice{display:block}.details-panel .notice strong{display:block;margin-bottom:5px}footer{display:flex;justify-content:space-between;gap:16px;padding:25px 3px;color:#557286;font-size:9px;letter-spacing:.04em}.test-progress{height:3px;background:#1b3042;border-radius:5px;overflow:hidden;margin-top:10px;display:none}.test-progress span{display:block;height:100%;width:0;background:var(--cyan);transition:width .2s}
+@media(max-width:850px){.main-grid,.lower-grid{grid-template-columns:1fr}.hero{align-items:flex-start;flex-direction:column}.sim-select{width:100%}.topbar{padding:0 16px}.shell{padding:25px 14px}.panel{padding:17px}.pill{display:none}}@media(max-width:420px){.top-actions{font-size:9px}.brand{font-size:12px}.brand-icon{width:36px;height:36px}.panel-heading{align-items:flex-start}.tag{font-size:8px}.metric{padding:11px}.metric strong{font-size:17px}footer{flex-direction:column}}
+</style>
+</head>
+<body>
+<div class="ambient ambient-a"></div><div class="ambient ambient-b"></div>
+<header class="topbar">
+  <a class="brand" href="#"><span class="brand-icon">⌁</span><span>CODER<span class="accent">-SELF</span><small>NETWORK INTELLIGENCE</small></span></a>
+  <div class="top-actions"><span class="status-dot"></span><span id="serverStatus">Browser speed test</span><span class="pill">WEB RADAR</span></div>
+</header>
+<main class="shell">
+  <section class="hero">
+    <div><p class="eyebrow">CONNECTIVITY LAB / 01</p><h1>Network <span class="accent">Speed Radar</span></h1>
+    <p class="muted hero-copy">Measure the connection you're using, compare results from each SIM, and explore signal information where your device supports it.</p></div>
+    <div class="sim-select"><label for="operator">TEST LABEL / OPERATOR</label><select id="operator"><option>Current Wi-Fi</option><option>Jio</option><option>Airtel</option><option>Vi</option><option>BSNL</option><option>Other</option></select><p class="tiny">Select the connection currently in use. This label is not automatically verified.</p></div>
+  </section>
+  <section class="main-grid">
+    <article class="panel radar-panel">
+      <div class="panel-heading"><div><p class="eyebrow">LIVE VISUALIZER</p><h2>Signal field</h2></div><span class="tag">VISUAL SIMULATION</span></div>
+      <div class="radar-wrap"><div class="radar" aria-label="Decorative animated radar visualization">
+        <div class="radar-grid"></div><div class="radar-sweep"></div><span class="radar-point p1"></span><span class="radar-point p2"></span><span class="radar-point p3"></span><span class="radar-center">YOU</span>
+        <span class="radar-label north">N</span><span class="radar-label east">E</span><span class="radar-label south">S</span><span class="radar-label west">W</span>
+      </div></div>
+      <div class="radar-legend"><span><i class="legend-dot cyan"></i>Decorative markers</span><span><i class="legend-dot violet"></i>Radar animation</span></div>
+      <div class="notice"><strong>Radar note</strong><span>The sweep and dots are visual effects only. They do not detect towers, signal direction, or nearby radio frequencies.</span></div>
+    </article>
+    <article class="panel metrics-panel">
+      <div class="panel-heading"><div><p class="eyebrow">MEASURED PERFORMANCE</p><h2>Your connection</h2></div><span class="live-label"><span class="status-dot"></span> REAL TEST</span></div>
+      <div class="speed-number"><strong id="download">—</strong><span>Mbps</span><small>DOWNLOAD</small></div>
+      <div class="speed-bars"><div><span>Download</span><div class="bar"><i id="downloadBar"></i></div></div><div><span>Upload</span><div class="bar"><i id="uploadBar"></i></div></div></div>
+      <div class="metric-cards">
+        <div class="metric"><span>UPLOAD</span><strong id="upload">— <small>Mbps</small></strong></div>
+        <div class="metric"><span>LATENCY</span><strong id="ping">— <small>ms</small></strong></div>
+        <div class="metric"><span>JITTER</span><strong id="jitter">— <small>ms</small></strong></div>
+        <div class="metric"><span>CELL SIGNAL</span><strong id="signal">N/A</strong></div>
+      </div>
+      <div class="button-row"><button id="startTest" class="primary">▶ Start speed test</button><button id="stopTest" class="secondary" disabled>Stop</button></div>
+      <div class="test-progress" id="progress"><span id="progressBar"></span></div>
+      <p id="testMessage" class="tiny" role="status">Ready. Tests use a public endpoint where available; speed results may vary with the test server.</p>
+    </article>
+  </section>
+  <section class="lower-grid">
+    <article class="panel">
+      <div class="panel-heading"><div><p class="eyebrow">OPERATOR HISTORY</p><h2>Compare networks</h2></div><button id="clearHistory" class="text-button">Clear history</button></div>
+      <div class="table-wrap"><table><thead><tr><th>Connection label</th><th>Download</th><th>Upload</th><th>Ping</th><th>Tested</th></tr></thead><tbody id="history"><tr><td colspan="5" class="empty">No real test results yet. Run a test to start your comparison.</td></tr></tbody></table></div>
+      <p class="tiny">For a fair comparison, test each SIM in the same place, one at a time, using the same endpoint. Your selected operator label is not verified by the browser.</p>
+    </article>
+    <article class="panel details-panel">
+      <div class="panel-heading"><div><p class="eyebrow">RADIO INFORMATION</p><h2>Cellular details</h2></div><span class="tag">BROWSER LIMITS</span></div>
+      <div class="detail-row"><span>Network operator</span><strong>Unavailable on web</strong></div>
+      <div class="detail-row"><span>Radio technology</span><strong>Unavailable on web</strong></div>
+      <div class="detail-row"><span>Frequency / band</span><strong>Requires Android app</strong></div>
+      <div class="detail-row"><span>Signal strength (dBm)</span><strong>Requires Android app</strong></div>
+      <div class="notice"><strong>Why unavailable?</strong><span>Web browsers don't expose full cellular modem readings. A companion Android app can show information permitted by your phone and Android version.</span></div>
+    </article>
+  </section>
+  <footer><span>CODER-SELF NETWORK RADAR</span><span>Measured connection tests · Radar is simulated · No tower detection</span></footer>
+</main>
+<script>
+(() => {
+  "use strict";
+  const $ = id => document.getElementById(id);
+  let running = false, aborter = null, rows = [];
+  const HISTORY_KEY = "coderSelfRadarHistory";
+  try { rows = JSON.parse(localStorage.getItem(HISTORY_KEY) || "[]"); if (!Array.isArray(rows)) rows = []; } catch { rows = []; }
+  const fmt = (n, d=1) => Number.isFinite(n) ? n.toFixed(d) : "—";
+  const setProgress = (n) => { $("progress").style.display = "block"; $("progressBar").style.width = Math.max(0,Math.min(100,n)) + "%"; };
+  function renderHistory() {
+    const body = $("history");
+    body.replaceChildren();
+    if (!rows.length) {
+      const tr = document.createElement("tr"), td = document.createElement("td");
+      td.colSpan = 5; td.className = "empty"; td.textContent = "No real test results yet. Run a test to start your comparison.";
+      tr.appendChild(td); body.appendChild(tr); return;
+    }
+    rows.slice(0,30).forEach(r => {
+      const tr = document.createElement("tr");
+      [r.operator, `${fmt(r.down)} Mbps`, `${fmt(r.up)} Mbps`, `${fmt(r.ping,0)} ms`, r.time].forEach(v => {
+        const td = document.createElement("td"); td.textContent = v; tr.appendChild(td);
+      });
+      body.appendChild(tr);
+    });
+  }
+  function saveRows() {
+    try { localStorage.setItem(HISTORY_KEY, JSON.stringify(rows.slice(0,30))); } catch {}
+  }
+  async function measureLatency(signal) {
+    const urls = [
+      "https://www.cloudflare.com/cdn-cgi/trace?radar=" + Date.now() + Math.random(),
+      "https://www.google.com/generate_204?radar=" + Date.now() + Math.random()
+    ];
+    const timings = [];
+    for (let i=0;i<5;i++) {
+      if (signal.aborted) throw new DOMException("Stopped", "AbortError");
+      const start = performance.now();
+      try {
+        // no-cors can still resolve for some endpoints, but opaque responses only measure request completion.
+        await fetch(urls[i % urls.length], {mode:"no-cors", cache:"no-store", signal});
+        timings.push(performance.now()-start);
+      } catch (e) {
+        if (e.name === "AbortError") throw e;
+        throw new Error("Latency endpoint unavailable in this browser/network. Use a configured test server for reliable ping.");
+      }
+      setProgress(5 + (i+1)*5);
+    }
+    const avg = timings.reduce((a,b)=>a+b,0)/timings.length;
+    const jitter = timings.slice(1).reduce((s,v,i)=>s+Math.abs(v-timings[i]),0)/(timings.length-1);
+    return {avg,jitter};
+  }
+  async function measureDownload(signal) {
+    // Public Cloudflare speed-test file endpoint. Cross-origin access policies can change;
+    // if it fails, use a trusted endpoint or your own server.
+    const bytes = 10_000_000;
+    const url = "https://speed.cloudflare.com/__down?bytes=" + bytes + "&nocache=" + Date.now();
+    const start = performance.now();
+    const response = await fetch(url, {cache:"no-store", signal});
+    if (!response.ok || !response.body) throw new Error("Download endpoint unavailable. Try another network or configure your own test server.");
+    const reader = response.body.getReader();
+    let total = 0;
+    while (true) {
+      const {done,value} = await reader.read();
+      if (done) break;
+      total += value.byteLength;
+      setProgress(30 + Math.min(40, total/bytes*40));
+      $("testMessage").textContent = `Download test running… ${(total/1e6).toFixed(1)} MB received`;
+    }
+    const elapsed = (performance.now()-start)/1000;
+    if (elapsed <= 0 || total === 0) throw new Error("No download data received.");
+    return total*8/elapsed/1e6;
+  }
+  async function measureUpload(signal) {
+    // Cloudflare's upload test endpoint. The browser may block it because of CORS or service policy.
+    const size = 1_000_000;
+    const payload = new Blob([new Uint8Array(size)], {type:"application/octet-stream"});
+    const start = performance.now();
+    const response = await fetch("https://speed.cloudflare.com/__up?nocache="+Date.now(), {
+      method:"POST", body:payload, cache:"no-store", signal
+    });
+    if (!response.ok) throw new Error("Upload endpoint rejected the test. Upload testing may be blocked by CORS or endpoint policy.");
+    await response.arrayBuffer().catch(()=>{});
+    const elapsed = (performance.now()-start)/1000;
+    return size*8/elapsed/1e6;
+  }
+  async function runTest() {
+    if (running) return;
+    running = true; aborter = new AbortController();
+    $("startTest").disabled = true; $("stopTest").disabled = false;
+    $("testMessage").textContent = "Measuring latency…"; setProgress(2);
+    try {
+      const lat = await measureLatency(aborter.signal);
+      $("ping").innerHTML = `${fmt(lat.avg,0)} <small>ms*</small>`;
+      $("jitter").innerHTML = `${fmt(lat.jitter,1)} <small>ms*</small>`;
+      $("testMessage").textContent = "Measuring download speed…";
+      const down = await measureDownload(aborter.signal);
+      $("download").textContent = fmt(down);
+      $("downloadBar").style.width = Math.min(100,down/200*100)+"%";
+      $("testMessage").textContent = "Measuring upload speed…";
+      let up = NaN;
+      try { up = await measureUpload(aborter.signal); }
+      catch (e) {
+        if (e.name === "AbortError") throw e;
+        $("testMessage").textContent = "Download completed. Upload unavailable from this browser endpoint.";
+      }
+      if (Number.isFinite(up)) {
+        $("upload").innerHTML = `${fmt(up)} <small>Mbps</small>`;
+        $("uploadBar").style.width = Math.min(100,up/100*100)+"%";
+      } else {
+        $("upload").innerHTML = `— <small>Mbps</small>`;
+        $("uploadBar").style.width = "0%";
+      }
+      const item = {operator:$("operator").value,down,up:Number.isFinite(up)?up:null,ping:lat.avg,jitter:lat.jitter,time:new Date().toLocaleString()};
+      rows.unshift(item); rows=rows.slice(0,30); saveRows(); renderHistory();
+      $("testMessage").textContent = "Test complete. *Latency is browser request timing, not ICMP ping. Results measure the current connection to public test endpoints.";
+      setProgress(100);
+    } catch (e) {
+      $("testMessage").textContent = e.name === "AbortError" ? "Test stopped." : "Test failed: "+e.message;
+    } finally {
+      running=false; aborter=null; $("startTest").disabled=false; $("stopTest").disabled=true;
+      setTimeout(()=>{if(!running){$("progress").style.display="none";$("progressBar").style.width="0%";}},1800);
+    }
+  }
+  $("startTest").addEventListener("click",runTest);
+  $("stopTest").addEventListener("click",()=>aborter?.abort());
+  $("clearHistory").addEventListener("click",()=>{rows=[];saveRows();renderHistory();});
+  $("operator").addEventListener("change",()=>{ $("testMessage").textContent="Selected label: "+$("operator").value+". Run a test to record a result for this connection."; });
+  renderHistory();
+})();
+</script>
+</body>
+</html>
